@@ -1,0 +1,307 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');/*This imports the Inter font from Google Fonts,making it available for use in the website*/
+:root{                     /*these variables can used throughout the CSS to ensure consistency*/
+    --md-dark-color: #1d1d1d;/*color value assigned to the variable*/
+    --dark-color: #171717;
+    --light-dark-color: #292929;
+    --yellow-color: #d4aa11;
+}/*: This variable can be reused throughout the stylesheet, making it easier to update colors in one place.*/
+*{                 /*  * is used to represent the universel selector and it selects all the elements of css*/
+    padding: 0;/*padding is the space inside the element,between its content and its border*/
+    margin: 0;/*margin is the space outside the element,creating the distance between it and sorrounding elements*/
+    -webkit-box-sizing: border-box;/*use for older version of webkit based browser*/
+            box-sizing: border-box;/*standard rule for modern browsers*//*width and height include padding and border in case of border-box*/
+}
+body{
+    font-family: 'Inter', sans-serif;
+}
+a{
+    text-decoration:none;
+}
+img{
+    width: 100%;
+    display:block;/*takes up the full width of its container(unless a width is set) and its start on a new line*/
+}
+.wrapper{
+    min-height: 100vh;/*100vh means 100% of the viewport height (the full height of the browser window)*/
+    background-color: var(--dark-color);
+}
+.wrapper .container{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    /*Why Use rem Instead of px?
+✅ Scalability – If the root font size changes, everything scales accordingly.
+✅ Accessibility – Users can increase browser font size, and the layout will adjust.
+✅ Consistency – Unlike em, rem always refers to the root font size.*/
+}
+.search-container{
+    background-color: var(--md-dark-color);
+    height: 180px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;/*to centre the search-box both vertically and horizontally*/
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;/*vertically centers the search box*/
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;/*horizontally centers the search box*/
+}
+.logo{
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--light-dark-color);
+}
+.logo p{
+    font-size: 2rem;
+    color: #fff;
+    font-weight: bold;
+}
+.logo p span{
+    color: var(--yellow-color);
+}
+.search-element{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;/*makes the search element flexible for better positioning*/
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;/*Ensures the elements (input box and search results) fill the available width.*/
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;/*Centers everything inside .search-element.*/
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;/*Stacks the search bar and search results vertically.*/
+    position: relative;/*Allow absolute positioning of dropdown search result*/
+}
+.search-element h3{
+    -ms-flex-item-align: center;
+        align-self: center;
+    margin-right: 1rem;
+    font-size: 2rem;
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+.search-element .form-control{
+    padding: 1rem 2rem;
+    font-size: 1.4rem;
+    border: none;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    outline: none;
+    color: var(--light-dark-color);
+    width: 350px;
+}
+.search-list{
+    position: absolute;/*position the search result below the input box*/
+    right: 0;/*allign the search result with right of input box*/
+    top: 100%;/*places the list directly below the search box*/
+    max-height: 500px;/*Limits the height of the results to 500 pixels.*/
+    overflow-y: scroll;/*Enables vertical scrolling if results exceed the height.*/
+    z-index: 10;/*Ensures the search results appear above other elements.*/
+
+}
+.search-list .search-list-item{
+    background-color: var(--light-dark-color);
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--dark-color);
+    width: calc(350px - 8px);/*The calc() function in CSS performs calculations based on user-defined expressions, allowing for dynamic values in properties. It supports addition, subtraction, multiplication, and division, enhancing flexibility in responsive design*/
+    color: #fff;
+    cursor: pointer;
+    -webkit-transition: background-color 200ms ease;
+    -o-transition: background-color 200ms ease;
+    transition: background-color 200ms ease;/*gradually changes the background color when hovered over and transition duration is 200ms and ease means smooth start and end*/
+}
+.search-list .search-list-item:Hover{
+    background-color: #1f1f1f;
+}
+.search-list-item{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+.search-item-thumbnail img{
+    width: 40px;
+    margin-right: 1rem;
+}
+.search-item-info h3{
+    font-weight: 600;
+    font-size: 1rem;
+}
+.search-item-info p{
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    font-weight: 600;
+    opacity: 0.6;/*The opacity property sets the opacity level for an element.
+
+The opacity-level describes the transparency-level, where 1 is not transparent at all, 0.5 is 50% see-through, and 0 is completely transparent.*/
+}
+
+/* thumbnail */
+.search-list::-webkit-scrollbar{
+    width: 8px;
+}
+.search-list::-webkit-scrollbar-track{
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+.search-list::-webkit-scrollbar-thumb{
+    background-color: var(--yellow-color);
+    outline: none;
+    border-radius: 10px;
+}
+  /* js related class */
+.hide-search-list{
+    display: none;
+}
+
+/* movie result */
+.result-container{
+    padding: 3rem 0;
+}
+.movie-poster img{
+    max-width: 300px;
+    margin: 0 auto;
+    border: 4px solid #fff;
+}
+.movie-info{      /*center and styles the movie detail text*/
+    text-align: center;
+    color: #fff;
+    padding-top: 3rem;
+}
+/*Movie info styling*/
+.movie-title
+{
+    font-size: 2rem;
+    color:var(--yellow-color);
+}
+.movie-misc-info{
+    list-style-type: none;/*By default, <ul> and <li> elements have bullet points (•) or numbers (1, 2, 3).*//*This removes those default list styles.*/
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;  /*to centre this class both vertically and horizontally*/     
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;/*vertically centers this class*/
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;/*horizontally centers this class*/
+    padding: 1rem;
+}
+.movie-info .year{
+    font-weight: 500;
+}
+.movie-info .rated{
+    background-color: var(--yellow-color);
+    padding: 0.4rem;
+    margin: 0 0.4rem;
+    border-radius: 3px;
+    font-weight: 600;
+}
+.movie-info .released{
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+.movie-info .writer{
+    padding: 0.5rem;
+    margin: 1rem 0;
+}
+.movie-info .genre{
+    background-color: var(--light-dark-color);
+    display: inline-block;/*it allows to set width and height of on the element (unlike inline) and element can sit next to other element(unlike-block)*/
+    padding: 0.5rem;
+    border-radius: 3px;
+}
+.movie-info .plot{
+    max-width: 400px;
+    margin: 1rem auto;
+}
+.movie-info .language{
+    color: var(--yellow-color);
+    font-style: italic;
+}
+.movie-info .awards{
+    font-weight: 300;
+    font-size: 0.9rem;
+}
+.movie-info .awards i{
+    color: var(--yellow-color);
+    margin: 1rem 0.7rem 0 0;
+}
+@media(max-width: 450px){/*this works at time of small screen*/
+    .logo p{
+        font-size: 1.4rem;
+    }
+    .search-element .form-control{
+        width: 90%;/*Makes the search bar take up 90% of the screen width instead of a fixed size.*/
+        margin: 0 auto;
+        padding: 0.5rem 1rem;
+    }
+    .search-element h3{
+        font-size: 1.4rem;
+    }
+    .search-list{
+        width: 90%;/* Makes the search results dropdown take up 90% of the screen width.*/
+        right: 50%;/* Moves the search list to the center.*/
+        -webkit-transform: translateX(50%);
+            -ms-transform: translateX(50%);
+                transform: translateX(50%);/* Ensures the search list is properly centered.*/
+    }
+    .search-list .search-list-item{
+        width: 100%;/*Ensures that each search result item takes up 100% of the search list's width.*/
+    }
+    .movie-misc-info{
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+    }
+    .movie-misc-info li:nth-child(2){
+        margin: 0.8rem 0;
+        /*Adds 0.8rem margin above and below the second movie info item.
+Ensures proper spacing between movie details when stacked.*/
+    }
+}
+
+@media(min-width: 800px){/*This works at time of large screen*/
+    .search-element{
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+                flex-direction: row;
+    }
+    .search-element h3{
+        margin-bottom: 0;
+    }
+    .result-grid{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        /*The .result-grid (which contains movie details) is displayed as a CSS grid.
+        grid-template-columns: repeat(2, 1fr);
+        This creates two equal columns (1fr means "one fraction of available space").
+        The movie poster goes in one column, and the movie details go in the second column*/
+       
+    }
+    .movie-info{
+        text-align: left;
+        padding-top: 0;
+    }
+    .movie-info .movie-misc-info{
+        -webkit-box-pack: start;
+            -ms-flex-pack: start;
+                justify-content: flex-start;/*Makes sure the movie info aligns to the left.*/
+        padding-left: 0;
+    }
+    .movie-info .plot{
+        margin-left: 0;
+    }
+    .movie-info .writer{
+        padding-left: 0;
+        margin-left: 0;
+    }
+}
